@@ -1,0 +1,264 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+* {
+    font-family: "Times New Roman";
+    font-size: large;
+}
+
+pre {
+    font-family: Georgia;
+}
+
+.event-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.event-header {
+    background-color: lightblue;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.event-details {
+    padding: 10px;
+
+    .event-image{
+        padding: 10px;
+        img{
+            width: 100%;
+            max-width: 100%;
+            height: 70%;
+            max-height: fit-content;
+            padding-top: 0;
+            margin-top: 0;
+        }
+    }
+}
+
+strong {
+    font-weight: bold;
+}
+
+.card {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #e3f2fd;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flex-container >div {
+    width: 300px;
+    margin: 10px;
+    font-size: 30px;
+}
+
+body {
+    font-family: 'Times New Roman', sans-serif; /* Change font to Roboto for a modern look */
+    background-color: #f8f9fa; /* Light gray background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Devise forms */
+
+.devise-form {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.devise-form h2 {
+    margin-bottom: 30px; /* Increased margin for better spacing */
+    font-size: 24px; /* Larger font size */
+    color: #007bff; /* Blue color for headers */
+}
+
+.devise-form input[type="email"],
+.devise-form input[type="password"],
+.devise-form input[type="submit"] {
+    width: 100%;
+    padding: 15px; /* Increased padding for better input appearance */
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    border-radius: 25px; /* Rounded corners */
+    border: 2px solid #007bff; /* Blue border */
+    background-color: #f8f9fa; /* Light gray background */
+    color: #333;
+    font-size: 16px; /* Larger font size */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.devise-form input[type="email"]:focus,
+.devise-form input[type="password"]:focus {
+    border-color: #0056b3; /* Darker blue border on focus */
+}
+
+/* Error messages */
+
+.error-explanation {
+    color: #dc3545;
+    margin-bottom: 20px;
+}
+
+.error-explanation h2 {
+    font-size: 20px; /* Larger font size */
+    font-weight: bold;
+    color: #dc3545; /* Red color for error messages */
+}
+
+.error-explanation ul {
+    margin: 0;
+    padding: 0;
+}
+
+.error-explanation ul li {
+    margin-bottom: 10px; /* Increased margin for better spacing */
+}
+
+/* Event details */
+
+.event-details h1 {
+    font-size: 28px; /* Larger font size */
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    color: #007bff; /* Blue color for headers */
+}
+
+.event-details h2 {
+    font-size: 24px; /* Larger font size */
+    margin-bottom: 15px; /* Increased margin for better spacing */
+}
+
+.event-details ul {
+    margin: 0;
+    padding: 0;
+}
+
+.event-details ul li {
+    margin-bottom: 15px; /* Increased margin for better spacing */
+}
+
+/* User profile */
+
+.user-profile {
+    margin-top: 40px; /* Increased margin for better spacing */
+}
+
+.user-profile h1 {
+    font-size: 28px; /* Larger font size */
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    color: #007bff; /* Blue color for headers */
+}
+
+.user-profile h2 {
+    font-size: 24px; /* Larger font size */
+    margin-bottom: 15px; /* Increased margin for better spacing */
+}
+
+.user-profile ul {
+    margin: 0;
+    padding: 0;
+}
+
+.user-profile ul li {
+    margin-bottom: 15px; /* Increased margin for better spacing */
+}
+
+.back-btn{
+    margin: 10px;
+}
+
+.field{
+    margin: 10px;
+}
+
+.actions{
+    margin: 10px;
+}
+
+.d-flex{
+    position: relative;
+    top: 10px;
+}
+
+.title-name{
+    font-family: "Raleway" !important;
+}
+
+.attendees-list{
+    margin: 10px 25px !important;
+}
+
+.events-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.event-card {
+    background-color: honeydew;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h2 {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+}
+
+.card-content p {
+    color: #555;
+    margin: 0 0 10px;
+}
+
+.card-content p strong {
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+.upcoming-events, .past-events {
+    margin-bottom: 40px;
+}

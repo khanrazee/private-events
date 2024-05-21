@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <%= link_to 'Private Events', root_path, class:'navbar-brand title-name' %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <% if user_signed_in? %>
+
+          <li class="nav-item">
+            <%= link_to 'My Events', user_path(current_user.id) ,class:'nav-link' %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Invitations', event_invitations_path(current_user.id) ,class:'nav-link' %>
+          </li>
+
+          <li class="nav-item notifications-nav" style="display: flex; flex-direction: row; align-items: center;">
+            <%= link_to 'Notifications', notifications_path, class:'nav-link', style: 'padding-right: 0' %>
+            <% if current_user.notifications.unread.count > 0 %>
+              <span style="color: rgba(0, 0, 0, .55);">(<%= current_user.notifications.unread.count %>)</span>
+          <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Create Event', new_event_path,class:'nav-link' %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'nav-link' %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Edit Profile', edit_user_registration_path , class:'nav-link' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign Up', new_user_registration_path , class:'nav-link' %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Sign In', user_session_path , class:'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+      <% if user_signed_in? %>
+      <form class="d-flex">
+        <p>Welcome, <%= current_user.email %></p>
+      </form>
+      <% end %>
+    </div>
+  </div>
+</nav>

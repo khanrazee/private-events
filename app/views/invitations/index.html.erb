@@ -1,0 +1,26 @@
+<h1>My Pending Invitations</h1>
+
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+  <tr style="border-bottom: 1px solid #000;">
+    <th style="padding: 8px; text-align: left;">Event</th>
+    <th style="padding: 8px; text-align: left;">Invited By</th>
+    <th style="padding: 8px; text-align: left;">Status</th>
+    <th style="padding: 8px; text-align: left;">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @invitations.pending.each do |invitation| %>
+    <tr style="border-bottom: 1px solid #000;">
+      <td style="padding: 8px; text-align: left;"><%= link_to invitation.event.title, invitation.event %></td>
+      <td style="padding: 8px; text-align: left;"><%= User.find(invitation.invited_by_id).email %></td>
+      <td style="padding: 8px; text-align: left;"><%= invitation.status %></td>
+      <td style="padding: 8px; text-align: left;">
+        <%= link_to 'Accept', respond_to_invitation_invitation_path(id: invitation.id, response: :accept), method: :get, style: 'text-decoration: none; color: #007bff; margin-right: 5px;', data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Decline', respond_to_invitation_invitation_path(id: invitation.id, response: :decline), method: :get, style: 'text-decoration: none; color: #dc3545; margin-right: 5px;', data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Maybe', respond_to_invitation_invitation_path(id: invitation.id, response: :maybe), method: :get, style: 'text-decoration: none; color: #355E3B;', data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

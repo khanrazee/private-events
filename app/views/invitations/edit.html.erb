@@ -1,0 +1,13 @@
+<!-- app/views/invitations/edit.html.erb -->
+<h1>Edit Invitation</h1>
+
+<%= form_for(@invitation) do |f| %>
+  <div class="field">
+    <%= f.label :invitee_id %>
+    <%= f.collection_select :invitee_id, User.all, :id, :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Update Invitation' %>
+  </div>
+<% end %>

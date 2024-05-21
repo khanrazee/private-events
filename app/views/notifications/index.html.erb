@@ -1,0 +1,18 @@
+<h1>Notifications</h1>
+
+<ul>
+  <% @notifications.each do |notification| %>
+    <% if notification.actor != nil && notification.notifiable != nil%>
+      <li>
+        <%= notification.actor.email %>
+        <%= notification.action %>
+        <%  if current_user == notification.notifiable.event.creator %>
+          <%= link_to notification.notifiable.event.title, notification.notifiable.event %>
+        <% else %>
+          <%= link_to notification.notifiable.event.title, event_invitations_path(current_user.id) %>
+        <% end %>
+        <%= time_ago_in_words(notification.created_at) %> ago
+      </li>
+    <% end %>
+  <% end %>
+</ul>

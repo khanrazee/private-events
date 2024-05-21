@@ -1,0 +1,56 @@
+
+<div class="card" style="max-width: 450px">
+  <div class="card-header">
+    <h3><%= @event.title %></h3>
+    <% if user_signed_in? && @event.creator == current_user %>
+      <%= link_to 'Invite People', new_event_invitation_path(@event), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="card-body">
+    <div class="event-details">
+      <div class="event-image">
+        <% if @event.image.present? %>
+          <%= image_tag @event.image.url %>
+        <% end %>
+      </div>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @event.description %>
+      </p>
+
+      <p>
+        <strong>Date:</strong>
+        <%= @event.date %>
+      </p>
+
+      <p>
+        <strong>Location:</strong>
+        <%= @event.location %>
+      </p>
+
+      <h3>Attendees:</h3>
+      <ul class="attendees-list">
+        <% @event.attendees.each do |attendee| %>
+          <li><%= attendee.email %></li>
+        <% end %>
+      </ul>
+
+      <h3>Invitees:</h3>
+      <ul class="attendees-list">
+        <% @event.invitations.pending.each do |invitee| %>
+          <li><%= User.find(invitee.invitee_id).email %></li>
+        <% end %>
+      </ul>
+
+      <% if user_signed_in? && @event.creator == current_user %>
+        <div style="display: flex; flex-direction: row;">
+          <%= link_to 'Edit Event', edit_event_path(@event), class: "btn btn-secondary", style: 'margin-right: 5px;' %>
+          <%= button_to 'Delete Event', @event, method: :delete, class: "btn btn-danger", style: 'margin-left: 5px;' %>
+        </div>
+      <% end %>
+
+    </div>
+    <%= link_to 'Back', events_path, class: "btn btn-secondary back-btn" %>
+  </div>
+</div>
