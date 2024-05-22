@@ -7,11 +7,7 @@ Rails.application.routes.draw do
     resources :invitations, only: [:new, :create, :index]
   end
 
-  resources :invitations, only: [:edit, :update, :destroy] do
-    member do
-      get :respond_to_invitation
-    end
-  end
+  resources :invitations, only: [:edit, :update, :destroy]
 
   resources :notifications, only: [:index] do
     member do

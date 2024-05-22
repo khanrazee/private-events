@@ -10,11 +10,11 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find(params[:id])
   end
 
-  def respond_to_invitation
+  def update
     @invitation = current_user.invitations.find(params[:id])
     @event = @invitation.event
 
-    response_status = case params[:response]
+    response_status = case params[:invitation][:response]
                       when 'accept'
                         :accepted
                       when 'decline'
@@ -55,15 +55,6 @@ class InvitationsController < ApplicationController
       else
         render :new, alert: 'Unable to send invitation.'
       end
-    end
-  end
-
-  def update
-    @invitation = Invitation.find(params[:id])
-    if @invitation.update(accepted: true)
-      redirect_to @invitation.event, notice: 'Invitation accepted.'
-    else
-      redirect_to @invitation.event, alert: 'Unable to accept invitation.'
     end
   end
 

@@ -15,10 +15,10 @@
       <td style="padding: 8px; text-align: left;"><%= link_to invitation.event.title, invitation.event %></td>
       <td style="padding: 8px; text-align: left;"><%= User.find(invitation.invited_by_id).email %></td>
       <td style="padding: 8px; text-align: left;"><%= invitation.status %></td>
-      <td style="padding: 8px; text-align: left;">
-        <%= link_to 'Accept', respond_to_invitation_invitation_path(id: invitation.id, response: :accept), method: :get, style: 'text-decoration: none; color: #007bff; margin-right: 5px;', data: { confirm: 'Are you sure?' } %>
-        <%= link_to 'Decline', respond_to_invitation_invitation_path(id: invitation.id, response: :decline), method: :get, style: 'text-decoration: none; color: #dc3545; margin-right: 5px;', data: { confirm: 'Are you sure?' } %>
-        <%= link_to 'Maybe', respond_to_invitation_invitation_path(id: invitation.id, response: :maybe), method: :get, style: 'text-decoration: none; color: #355E3B;', data: { confirm: 'Are you sure?' } %>
+      <td style="padding: 8px; text-align: left; display: flex; flex-direction: row">
+        <%= button_to 'Accept', invitation_path(invitation, invitation: { response: 'accept' }), method: :patch, style: 'text-decoration: none; color: #007bff; margin-right: 5px;', data: { confirm: 'Are you sure?' } %>
+        <%= button_to 'Decline', invitation_path(invitation, invitation: { response: 'decline' }), method: :patch, style: 'text-decoration: none; color: #dc3545; margin-right: 5px;', data: { confirm: 'Are you sure?' } %>
+        <%= button_to 'Maybe', invitation_path(invitation, invitation: { response: 'maybe' }), method: :patch, style: 'text-decoration: none; color: #355E3B;', data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
   <% end %>
